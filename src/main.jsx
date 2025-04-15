@@ -9,7 +9,6 @@ import { store } from '../src/app/Store.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
-
       <App />
     </Provider>
   </StrictMode>,

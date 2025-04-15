@@ -1,21 +1,22 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { addTask, deleteTask } from '../app/Store';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { DeleteIcon } from 'lucide-react';
+import { addTask, deleteTask } from '../app/Store'  // Import actions here
 
 const Hero = () => {
-    const tasks = useSelector((state) => state.task);
+    const tasks = useSelector((state) => state.task.task);  // Correct state access
     const dispatch = useDispatch();
     const [task, setTask] = useState('');
 
+
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        dispatch(addTask(task));
+        dispatch(addTask(task));  // Dispatching the addTask action
         setTask('');
     }
 
     const handleDelete = (index) => {
-        dispatch(deleteTask(index));
+        dispatch(deleteTask(index));  // Dispatching the deleteTask action
     }
 
     return (
@@ -38,7 +39,6 @@ const Hero = () => {
                         Add task
                     </button>
                 </form>
-
                 <ul className='mt-4 space-y-2'>
                     {
                         tasks.map((CurrTask, index) => (
